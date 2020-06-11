@@ -1,9 +1,5 @@
 ---
-# - hosts: all
-#   roles:
-#     - configure_host
-#     - setup_application
-
-- hosts: localhost
+- hosts: all
   roles:
-    - setup_jenkins
+    - configure_host
+    - setup_nagios

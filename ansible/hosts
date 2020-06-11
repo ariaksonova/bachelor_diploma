@@ -1,2 +1,2 @@
 [server]
-web_server ansible_host=192.168.99.102 ansible_user=root ansible_ssh_pass=test
+web_server ansible_host=192.168.99.101 ansible_user=root ansible_ssh_pass=jenkins

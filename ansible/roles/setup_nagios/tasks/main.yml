@@ -1,0 +1,23 @@
+---
+- name: Copy docker file
+  copy:
+    src: "{{ role_path }}/files/Dockerfile"
+    dest: ./
+
+- name: Copy playbook for nagios
+  copy:
+    src: "{{ role_path }}/files/playbook.yml"
+    dest: ./
+
+- name: Copy docker compose file
+  copy:
+    src: "{{ role_path }}/files/docker-compose.yml"
+    dest: ./
+
+- name: Copy entrypoint script
+  copy:
+    src: "{{ role_path }}/files/docker-entrypoint.sh"
+    dest: ./
+
+- name: Up the docker container
+  shell: docker-compose up -d --build
