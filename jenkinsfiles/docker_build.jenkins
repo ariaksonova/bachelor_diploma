@@ -1,0 +1,23 @@
+#!groovy
+// Run docker build
+properties([disableConcurrentBuilds()])
+pipeline {
+    agent { 
+        label 'master'
+        }
+    triggers { pollSCM('* * * * *') }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestamps()
+    }
+    stages {
+        stage("create docker image") {
+            steps {
+                echo " ============== Start building image and run application =================="
+                dir ('test_application)') {
+                    sh 'docker-composer up -d --bild'
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,34 @@
+---
+- name: Ensure hostname set
+  hostname: name={{ inventory_hostname }}
+
+- name: Ensure hostname is in /etc/hosts
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ hostvars[item]['ansible_host'] }} {{ hostvars[item]['inventory_hostname'] }}"
+  with_items:  "{{ groups['all'] }}"
+
+- name: Install docker
+  yum:
+    name: docker
+    state: latest
+
+- name: Install git
+  yum:
+    name: git
+    state: latest
+
+- name: Install python3
+  yum:
+    name: python3
+    state: latest
+
+- name: Start service docker
+  service:
+    name: docker
+    state: started
+
+- name: Enable service docker
+  service:
+    name: docker
+    enabled: yes
