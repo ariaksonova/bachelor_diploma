@@ -15,7 +15,7 @@ pipeline {
             steps {
                 echo " ============== Start building image and run application =================="
                 dir ('test_application)') {
-                    sh 'docker-composer up -d --bild'
+                    sh 'docker-compose up -d --bild'
                 }
             }
         }
